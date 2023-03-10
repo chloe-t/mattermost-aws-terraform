@@ -98,23 +98,39 @@ From there, your .pem file should automatically be downloaded. **<ins>Save it</i
  
 
 ## Github Secrets
-### secrets.AWS_ACCESS_KEY and secrets.AWS_SECRET_ACCESS_KEY
+### AWS_ACCESS_KEY and AWS_SECRET_ACCESS_KEY
 <span style="color:red">REQUIRED</span>
 
 Follow [previous instructions](#create-your-access-key) to get the access key and secret access key linked to your aws account. 
 
 Those access keys will be used to authenticate to your account so that ressources can be deployed from your AWS account.
 
-### secrets.TF_API_TOKEN
+### TF_API_TOKEN
 <span style="color:red">REQUIRED</span>
 
 The terraform cloud api token generated from [Terraform Cloud configuration](#terraform-cloud-configuration)
 
 
-### secrets.AWS_REGION <!-- eu-west-1 -->
+### AWS_REGION <!-- eu-west-1 -->
 <span style="color:green">OPTIONAL</span> *default to <ins>eu-west-1</ins>*
 
 Choose the region in which you want your ressources to be deployed into. 
 Some regions are listed [here](https://docs.aws.amazon.com/general/latest/gr/rande.html) under "Regional endpoints". 
 
 Example value: `eu-west-1` corresponding to Ireland endpoint.
+
+---
+
+You will find you github secrets inside your repository settings, under `Security` > `Secrets and variables` > `Actions` >> `New repository secret`. 
+
+Ensure to use secrets and not variables for sensitive data such as token. 
+
+![Saving secret in Github Secret](./img/github-secrets.png)
+
+
+---
+
+<br>
+
+Before deploying, you should have at least those values available in Github Secrets: 
+![required secrets](./img/required-secrets.png)

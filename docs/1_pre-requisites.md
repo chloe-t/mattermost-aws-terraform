@@ -112,7 +112,7 @@ The terraform cloud api token generated from [Terraform Cloud configuration](#te
 
 
 ### AWS_REGION <!-- eu-west-1 -->
-<span style="color:green">OPTIONAL</span> *default to <ins>eu-west-1</ins>*
+<span style="color:red">REQUIRED</span> <!-- *default to <ins>eu-west-1</ins>* -->
 
 Choose the region in which you want your ressources to be deployed into. 
 Some regions are listed [here](https://docs.aws.amazon.com/general/latest/gr/rande.html) under "Regional endpoints". 

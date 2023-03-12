@@ -17,6 +17,12 @@ terraform {
   }
 }
 
+variable "AWS_DEFAULT_REGION" {}
+
+provider "aws" {
+  region = var.AWS_DEFAULT_REGION
+}
+
 /* data "aws_region" "current" {}
 
   provider "aws" {

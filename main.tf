@@ -17,7 +17,7 @@ terraform {
   }
 }
 
-variable "aws_region" {}
+/* variable "aws_region" {} */
 
 provider "aws" {
   region = var.aws_region

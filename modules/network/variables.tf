@@ -56,11 +56,11 @@ variable "enable_dns_support" {
 # Subnet Variables
 # -------------------------------------------
 
-variable "subnet_cidr_block" {
+/* variable "subnet_cidr_block" {
   description = "Subnet cidr block"
   type        = string
   default     = ""
-}
+} */
 
 # -------------------------------------------
 # Internet Gateway Variables

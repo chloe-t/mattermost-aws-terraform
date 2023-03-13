@@ -24,6 +24,10 @@ resource "aws_subnet" "this" {
 
   tags = merge({ "Name" = "subnet-${var.project_name}" }, var.tags)
 
+  depends_on = [
+    aws_vpc.this
+  ]
+
 }
 
 ################################################################################

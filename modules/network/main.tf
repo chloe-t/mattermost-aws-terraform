@@ -60,7 +60,7 @@ resource "aws_security_group" "this" {
     from_port   = var.app_port
     to_port     = var.app_port
     protocol    = "tcp"
-    cidr_blocks = [aws_subnet.this[0].cidr_block]
+    cidr_blocks = [aws_subnet.this.cidr_block]
   }
 
   egress {

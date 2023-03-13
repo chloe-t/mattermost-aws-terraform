@@ -28,6 +28,7 @@ locals {
     CreatedOn   = timestamp()
     Environment = terraform.workspace
   }
+  availability_zone = "${var.aws_region}a"
 }
 
 module "network" {

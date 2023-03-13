@@ -4,11 +4,11 @@ variable "aws_region" {
   default     = null
 }
 
-variable "availability_zone" {
+/* variable "availability_zone" {
   description = "EC2 availability_zone"
   type        = string
   default     = "${aws_region}a"
-}
+} */
 
 variable "tags" {
   description = "Tag map for the resource"

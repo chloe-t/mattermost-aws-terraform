@@ -71,6 +71,11 @@ resource "aws_security_group" "this" {
     cidr_blocks = [var.allow_all_ips] #["0.0.0.0/0"]
   }
 
+  depends_on = [
+    aws_vpc.this,
+    aws_subnet.this
+  ]
+
   tags = merge({ "Name" = "sec_group-${var.project_name}" }, var.tags)
 }
 

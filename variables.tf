@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "availability_zone" {
   description = "EC2 availability_zone"
   type        = string
-  default     = "eu-west-1"
+  default     = "${aws_region}a"
 }
 
 variable "tags" {

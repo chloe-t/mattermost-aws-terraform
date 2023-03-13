@@ -17,17 +17,9 @@ terraform {
   }
 }
 
-/* variable "aws_region" {} */
-
 provider "aws" {
   region = var.aws_region
 }
-
-/* data "aws_region" "current" {}
-
-  provider "aws" {
-    region = data.aws_region.current.name
-  } */
 
 locals {
   tags = {

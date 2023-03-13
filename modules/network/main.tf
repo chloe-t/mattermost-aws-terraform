@@ -48,7 +48,7 @@ resource "aws_security_group" "this" {
   vpc_id      = aws_vpc.this[0].id
 
   ingress {
-    description = "SSH Port 22 allowed from ?? IP"
+    description = "SSH Port 22 allowed from all IP"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -60,7 +60,7 @@ resource "aws_security_group" "this" {
     from_port   = var.app_port
     to_port     = var.app_port
     protocol    = "tcp"
-    cidr_blocks = [var.subnet_cidr_block]
+    cidr_blocks = [aws_subnet.this[0].cidr_block]
   }
 
   egress {

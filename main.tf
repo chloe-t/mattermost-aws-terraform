@@ -35,7 +35,7 @@ module "network" {
   source = "./modules/network"
 
   project_name      = var.project_name
-  availability_zone = var.availability_zone
+  availability_zone = local.availability_zone
   tags              = merge({ "Module" = "${var.project_name}-network" }, local.tags)
 }
 
@@ -45,7 +45,7 @@ module "ec2" {
   depends_on = [module.network]
 
   project_name          = var.project_name
-  availability_zone     = var.availability_zone
+  availability_zone     = local.availability_zone
   aws_security_group_id = module.network.aws_security_group_id
   tags                  = merge({ "Module" = "${var.project_name}-ec2" }, local.tags)
 }

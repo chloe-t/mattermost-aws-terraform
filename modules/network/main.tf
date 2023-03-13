@@ -57,7 +57,7 @@ resource "aws_security_group" "this" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    //cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
@@ -66,7 +66,7 @@ resource "aws_security_group" "this" {
     to_port     = var.app_port
     protocol    = "tcp"
     #cidr_blocks = [aws_subnet.this.cidr_block]
-    cidr_blocks = ["0.0.0.0/0"]
+    //cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -74,7 +74,7 @@ resource "aws_security_group" "this" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1" # allow all outbound
-    cidr_blocks = [var.allow_all_ips]
+    //cidr_blocks = [var.allow_all_ips]
   }
 
   depends_on = [

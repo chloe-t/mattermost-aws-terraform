@@ -47,6 +47,8 @@ module "ec2" {
   project_name          = var.project_name
   availability_zone     = local.availability_zone
   aws_security_group_id = module.network.aws_security_group_id
+  aws_vpc_id            = module.network.aws_vpc_id
+  aws_subnet_id         = module.network.aws_subnet_id
   tags                  = merge({ "Module" = "${var.project_name}-ec2" }, local.tags)
 }
 

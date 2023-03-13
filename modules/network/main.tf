@@ -19,7 +19,6 @@ resource "aws_vpc" "this" {
 
 resource "aws_subnet" "this" {
   vpc_id                  = aws_vpc.this[0].id
-  cidr_block              = var.subnet_cidr_block
   map_public_ip_on_launch = true
   availability_zone       = var.availability_zone
 
@@ -44,7 +43,7 @@ resource "aws_internet_gateway" "this" {
 ################################################################################
 
 resource "aws_security_group" "this" {
-  name        = "sg-${var.project_name}"
+  name        = "sec_group-${var.project_name}"
   description = "Security group for ${aws_vpc.this[0].id}"
   vpc_id      = aws_vpc.this[0].id
 
@@ -72,7 +71,7 @@ resource "aws_security_group" "this" {
     cidr_blocks = [var.allow_all_ips] #["0.0.0.0/0"]
   }
 
-  tags = merge({ "Name" = "sg-${var.project_name}" }, var.tags)
+  tags = merge({ "Name" = "sec_group-${var.project_name}" }, var.tags)
 }
 
 ################################################################################
@@ -84,7 +83,7 @@ resource "aws_route_table" "this" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.this.*.id
+    gateway_id = aws_internet_gateway.this[0].id
   }
 
   tags = merge({ "Name" = "routeTable-${var.project_name}" }, var.tags)

@@ -28,7 +28,7 @@ variable "create_vpc" {
   default     = true
 }
 
-variable "cidr" {
+variable "vpc_cidr" {
   description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
   type        = string
   default     = "10.10.10.0/24"
@@ -56,11 +56,11 @@ variable "enable_dns_support" {
 # Subnet Variables
 # -------------------------------------------
 
-/* variable "subnet_cidr_block" {
+variable "subnet_cidr" {
   description = "Subnet cidr block"
   type        = string
-  default     = ""
-} */
+  default     = "10.10.10.0/25"
+}
 
 # -------------------------------------------
 # Internet Gateway Variables

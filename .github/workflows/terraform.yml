@@ -9,8 +9,8 @@ on:
         default: "deploy"
         type: choice
         options:
-          - deploy/update
-          - destroy dry run
+          - deploy-update
+          - dry-destroy
           - destroy
 
 permissions:
@@ -43,73 +43,31 @@ jobs:
         run: terraform init
 
       # Checks that all Terraform configuration files adhere to a canonical format
+      # Execute only if choosen action is "deploy/update"
       - name: Terraform Format
         if: github.event.inputs.action == 'deploy/update'
         run: terraform fmt -check
 
       # Generates an execution plan for Terraform
+      # Execute only if choosen action is "deploy/update"
       - name: Terraform Plan
         if: github.event.inputs.action == 'deploy/update'
         run: terraform plan -input=false
 
+      # Apply all action defined in Terraform. It will deploy all the infrastructure
+      # Execute only if choosen action is "deploy/update"
       - name: Terraform Apply
-        if: github.event.inputs.action == 'deploy/update'
+        if: github.event.inputs.action == 'deploy-update'
         run: terraform apply -auto-approve -input=false
 
+      # Will display all actions that will be destroyed if you execute a destroy
+      # Execute only if choosen action is "destroy dry run"
       - name: Terraform Destroy plan
-        if: github.event.inputs.action == 'destroy dry run'
+        if: github.event.inputs.action == 'dry-destroy'
         run: terraform plan -destroy
 
+      # Will destroy all ressources as displayed by destroy dry run
+      # Execute only if choosen action is "destroy"
       - name: Terraform destroy
-        if: ${{ github.event.inputs.action }} == 'destroy'
+        if: github.event.inputs.action == 'destroy'
         run: terraform destroy -auto-approve -input=false
-
-  # terraform-destroy-plan:
-  #   name: "Terraform destroy DRY-RUN"
-  #   runs-on: ubuntu-latest
-  #   environment: production
-
-  #   # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-  #   defaults:
-  #     run:
-  #       shell: bash
-
-  #   steps:
-  #     # Checkout the repository to the GitHub Actions runner
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-
-  #     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-  #     - name: Setup Terraform
-  #       uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-
-  #     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-  #     - name: Terraform Init
-  #       run: terraform init
-
-  # terraform-destroy:
-  #   name: "Terraform destroy"
-  #   runs-on: ubuntu-latest
-  #   environment: production
-
-  #   # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-  #   defaults:
-  #     run:
-  #       shell: bash
-
-  #   steps:
-  #     # Checkout the repository to the GitHub Actions runner
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-
-  #     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-  #     - name: Setup Terraform
-  #       uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-
-  #     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-  #     - name: Terraform Init
-  #       run: terraform init

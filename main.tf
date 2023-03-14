@@ -8,11 +8,11 @@ terraform {
 
   backend "remote" {
     # The name of your Terraform Cloud organization.
-    organization = "test-organization-tf-cloud" # To Update
+    organization = "CAPiTec"
 
     # The name of the Terraform Cloud workspace to store Terraform state files in.
     workspaces {
-      name = "test-organization-tf-cloud" # To update
+      name = "CAPiTec"
     }
   }
 }

@@ -83,4 +83,5 @@ https://stackoverflow.com/questions/69323678/terraform-folder-structure -->
 [Don't forget to add the port at the end of your URL](/docs/2_deploy.md#access-the-instance-from-browser)
 
 - I CAN'T FIND MY INSTANCE ON EC2 DASHBOARD
+
 [Check that the console is in the correct AWS region](/docs/2_deploy.md#access-the-instance-from-browser)

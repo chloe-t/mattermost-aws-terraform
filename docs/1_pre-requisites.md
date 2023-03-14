@@ -52,7 +52,7 @@ Organization name and workspace name can have the same value, as long as it corr
     - Choose a name
     - If the user you are creating is only meant to be used to deploy those ressources, it doesn't need the access to the AWS Management Console, so don't check the box.
     - Click on `Next`
-    - Configure security policies using `Attach policies directly`. (if you don't know which one to choose, it's not recommended for security reasons, but you may use `AdministratorAccess` in a first place.)
+    - Configure security policies using `Attach policies directly`. (Add `AmazonEC2FullAccess`)
     - Click on `Next`
     - You'll land on a 'Review and create page'. Review displayed information, and validate them clicking `Create user`
 - Select the user that we will use to create access key

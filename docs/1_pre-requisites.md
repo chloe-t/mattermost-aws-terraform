@@ -3,6 +3,7 @@
 1. [Terraform Cloud configuration](#terraform-cloud-configuration)
 2. [AWS Configurations](#aws-configurations)
 3. [Github Secrets](#github-secrets)
+4. [Recap before deployment](#recap-before-deployment)
 
 <br>
 <br>
@@ -31,6 +32,9 @@ Save this token, you will need to save it as a Github secret.
     }
   }
 ```
+***
+<ins>**For now, don't `git push` those modifications, you'll do it when all pre-requesites will be achieved. Pushing on the repo will trigger the deployment, that's not what you want right now!**</ins>
+***
 
 **NOTE**
 
@@ -143,3 +147,23 @@ Example value: `eu-west-1` corresponding to Ireland endpoint.
 
 Before deploying, you should have at least those values available in Github Secrets: 
 ![required secrets](./img/required-secrets.png)
+
+<br>
+<br>
+
+## Recap before deployment
+Here's the check-list of what you should have done:
+
+[Terraform]
+- Account creation
+- Organisation creation
+- API Token creation
+- main.tf file update **without pushing**
+
+[AWS Configuration]
+- Access Key creation
+- EC2 Key-pair creation
+
+[Secrets]
+- Github secrets
+- Terraform Cloud secrets

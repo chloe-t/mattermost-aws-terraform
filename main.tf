@@ -17,17 +17,9 @@ terraform {
   }
 }
 
-/* variable "aws_region" {} */
-
 provider "aws" {
   region = var.aws_region
 }
-
-/* data "aws_region" "current" {}
-
-  provider "aws" {
-    region = data.aws_region.current.name
-  } */
 
 locals {
   tags = {
@@ -36,13 +28,14 @@ locals {
     CreatedOn   = timestamp()
     Environment = terraform.workspace
   }
+  availability_zone = "${var.aws_region}a"
 }
 
 module "network" {
   source = "./modules/network"
 
   project_name      = var.project_name
-  availability_zone = var.availability_zone
+  availability_zone = local.availability_zone
   tags              = merge({ "Module" = "${var.project_name}-network" }, local.tags)
 }
 
@@ -52,8 +45,10 @@ module "ec2" {
   depends_on = [module.network]
 
   project_name          = var.project_name
-  availability_zone     = var.availability_zone
+  availability_zone     = local.availability_zone
   aws_security_group_id = module.network.aws_security_group_id
+  aws_vpc_id            = module.network.aws_vpc_id
+  aws_subnet_id         = module.network.aws_subnet_id
   tags                  = merge({ "Module" = "${var.project_name}-ec2" }, local.tags)
 }
 

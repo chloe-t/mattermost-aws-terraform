@@ -13,3 +13,8 @@ output "aws_vpc_id" {
   value       = try(aws_vpc.this[0].id, "")
   description = "VPC id"
 }
+
+output "aws_subnet_id" {
+  value       = try(aws_subnet.this.id, "")
+  description = "Subnet ID"
+}

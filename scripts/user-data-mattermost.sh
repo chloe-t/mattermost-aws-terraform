@@ -1,11 +1,29 @@
+#!/bin/bash
+
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+echo ------------------------BEGIN
+
 # Install Docker 
-sudo apt update -y
-sudo apt install docker.io -y
-sudo systemctl start docker
+apt update -y
+apt install docker.io -y
+systemctl start docker
 
 # Install Docker compose
-sudo apt-get update -y
-sudo apt-get install docker-compose-plugin -y
+apt-get update -y
+apt-get install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+apt-get update -y
+apt-get install docker-compose-plugin -y
 
 # Install Mattermost
 git clone https://github.com/mattermost/docker
@@ -18,7 +36,9 @@ sed -i -e 's/DOMAIN=.*/DOMAIN=mattermost.capitech.fr/g' \
         .env
 
 mkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes}
-sudo chown -R 2000:2000 ./volumes/app/mattermost
+chown -R 2000:2000 ./volumes/app/mattermost
 
 # Up docker container
-sudo docker compose -f docker-compose.yml -f docker-compose.without-nginx.yml up -d
+docker compose -f docker-compose.yml -f docker-compose.without-nginx.yml up -d
+
+echo ------------------------END

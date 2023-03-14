@@ -6,7 +6,6 @@ resource "aws_instance" "this" {
 
   # Security group assign to instance
   vpc_security_group_ids = [var.aws_security_group_id]
-  #security_groups
   subnet_id = var.aws_subnet_id
   key_name  = var.key_name
   user_data = file("./scripts/${var.install_script_name}")
@@ -14,11 +13,6 @@ resource "aws_instance" "this" {
 }
 
 
-# Use key_name in instance or "aws_key_pair" ressource
-/* resource "aws_key_pair" "deployer" {
-  key_name   = "deployer-key"
-  public_key = var.public_key
-} */
 
 resource "aws_ebs_volume" "this" {
   availability_zone = var.availability_zone

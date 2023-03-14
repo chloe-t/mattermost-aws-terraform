@@ -32,9 +32,6 @@ Save this token, you will need to save it as a Github secret.
     }
   }
 ```
-***
-<ins>**For now, don't `git push` those modifications, you'll do it when all pre-requesites will be achieved. Pushing on the repo will trigger the deployment, that's not what you want right now!**</ins>
-***
 
 **NOTE**
 
@@ -158,7 +155,7 @@ Here's the check-list of what you should have done:
 - Account creation
 - Organisation creation
 - API Token creation
-- main.tf file update **without pushing**
+- main.tf file update with workspace and organization name
 
 [AWS Configuration]
 - Access Key creation

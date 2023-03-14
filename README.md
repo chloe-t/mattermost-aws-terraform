@@ -9,6 +9,9 @@ You ready?
 2. [Deploy](./docs/2_deploy.md) 
 3. [Maintenance](./docs/3_maintenance.md)
 
+<br>
+<br>
+
 
 # What wil be deployed? 
 In this architecture:
@@ -20,6 +23,8 @@ In this architecture:
     - The Docker container is exposed on port 8065 and is accessible from the Internet thanks to the security group allowing this rule.
     - The public subnet is associated with a routing table that maps traffic to the IGW. This allows traffic destined for the Internet to be routed out of the VPC through the IGW.
     - The private subnet can contain other resources, such as additional EC2 instances, that are not accessible from the Internet.
+
+All those ressources are automatically provisionned by terraform. 
 
 Schema of ressources that will be deployed: 
 
@@ -69,4 +74,13 @@ More informations about Mattermost server deployment [here](https://docs.matterm
 https://stackoverflow.com/questions/69323678/terraform-folder-structure -->
 # FAQ
 
-- WHERE IS MY SERVER URL ONCE TERRAFORMS ENDS RUNNING?
+- WHERE IS MY SERVER URL DISPLAYED ONCE TERRAFORM ENDS DEPLOYING?
+
+[Answer here](/docs/2_deploy.md#access-the-instance-from-browser)
+
+- NOTHING HAPPENS WHEN I REACH THE PUBLIC URL OF MY INSTANCE
+
+[Don't forget to add the port at the end of your URL](/docs/2_deploy.md#access-the-instance-from-browser)
+
+- I CAN'T FIND MY INSTANCE ON EC2 DASHBOARD
+[Check that the console is in the correct AWS region](/docs/2_deploy.md#access-the-instance-from-browser)

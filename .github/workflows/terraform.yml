@@ -21,7 +21,7 @@ jobs:
     name: "Terraform deploy or update"
     runs-on: ubuntu-latest
     environment: production
-    if: ${{ github.event.inputs. }} == 'deploy/update'
+    if: ${{ github.event.inputs.action }} == 'deploy/update'
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -58,7 +58,7 @@ jobs:
     name: "Terraform destroy DRY-RUN"
     runs-on: ubuntu-latest
     environment: production
-    if: ${{ github.event.inputs. }} == 'destroy dry run'
+    if: ${{ github.event.inputs.action }} == 'destroy dry run'
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -87,7 +87,7 @@ jobs:
     name: "Terraform destroy"
     runs-on: ubuntu-latest
     environment: production
-    if: ${{ github.event.inputs. }} == 'destroy'
+    if: ${{ github.event.inputs.action }} == 'destroy'
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:

@@ -86,7 +86,7 @@ Follow those steps:
 - Ensure that the selected region is the same as the one you'll use for your deployment.
 - On the left navigation panel select `Network & Security` > `Key Pairs`
 - Click on the top right `Create key pair`
-- The name of the key paie should be **`mttmst_kp`**
+- The name of the key pair should be **`mttmst_kp`**
 - Key pair type: **RSA**
 - Private key file format: **.pem**
 - Click on `Create key pair`

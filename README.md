@@ -7,7 +7,9 @@ You ready?
 
 1. [Pre-requisites](./docs/1_pre-requisites.md)
 2. [Deploy](./docs/2_deploy.md) 
-3. [Maintenance](./docs/3_maintenance.md)
+3. [Setup Server](./docs/3_setup-server.md)
+4. [Maintenance](./docs/4_maintenance.md)
+5. [Miscellaneous](./docs/5_miscellaneous.md)
 
 <br>
 <br>
